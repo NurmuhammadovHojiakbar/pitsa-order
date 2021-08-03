@@ -94,10 +94,12 @@ function createElOption(option){
     elOption.querySelector("option").textContent = option.name;
     return elOption;
 }
-
+let elOptionFragment = document.createDocumentFragment();
 pizzaOptions.breadTypes.forEach(function(breadtype){
-    elPitsaFormBreadType.appendChild(createElOption(breadtype))
+    elOptionFragment.appendChild(createElOption(breadtype))
 })
+elPitsaFormBreadType.appendChild(elOptionFragment)
+
 // Create Radio Input
 
 let elRadioTemplate = document.querySelector(".pizza-size-radio-template").content;
@@ -108,10 +110,11 @@ function createElRadioSize(size){
     elRadioSize.querySelector('.radio-control').textContent = `${size.name} ${size.size}sm`;
     return elRadioSize;
 }
-
+let elSizeFragment = document.createDocumentFragment();
 pizzaOptions.sizes.forEach(function(size){
-    elPitsaFormSize.appendChild(createElRadioSize(size))
+    elSizeFragment.appendChild(createElRadioSize(size))
 })
+elPitsaFormSize.appendChild(elSizeFragment)
 
 // Create Checkbox input
 
@@ -123,11 +126,14 @@ function createElCheckboxTopping(topping){
     elCheckboxTopping.querySelector('.checkbox-control').textContent = topping.name;
     return elCheckboxTopping;
 }
-
+let elToppingFragment = document.createDocumentFragment();
 pizzaOptions.toppings.forEach(function(topping){
-    elPitsaFormTopping.appendChild(createElCheckboxTopping(topping))
+    elToppingFragment.appendChild(createElCheckboxTopping(topping))
 })
+elPitsaFormTopping.appendChild(elToppingFragment)
 
+let elAdnlFragment = document.createDocumentFragment();
 pizzaOptions.addl.forEach(function(topping){
-    elPitsaFormAdnl.appendChild(createElCheckboxTopping(topping))
+    elAdnlFragment.appendChild(createElCheckboxTopping(topping))
 })
+elPitsaFormAdnl.appendChild(elAdnlFragment)
