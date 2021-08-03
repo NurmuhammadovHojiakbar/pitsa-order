@@ -157,6 +157,39 @@ legend{
     background-color: #2C2E43;
 }
 
+
+/* Results  */
+
+h2{
+    color: #082032;
+}
+
+span{
+    font-size: 18px;
+    color: #2C2E43;
+}
+
+.submit{
+    background-color: tomato;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.submit:active{
+    transform: scale(0.9);
+}
+
+.pitsa-form__result ul{
+    list-style-type: none;
+}
+
+.pitsa-form__result ul li::before{
+    content: "📌";
+    margin-right: 3px;
+}
+
 @media (max-width:750px){
     .pitsa-form{
         flex-direction: column;

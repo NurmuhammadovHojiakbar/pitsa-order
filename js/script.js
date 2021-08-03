@@ -76,14 +76,15 @@ let pizzaOptions = {
         }
     ]
 };
+let summa = 10000;
 
 // Call Form and Fields
 
-const elPitsaForm = document.querySelector(".pitsa-form");
-const elPitsaFormBreadType = elPitsaForm.querySelector(".non-type");
-const elPitsaFormSize = elPitsaForm.querySelector(".pitsa-form__size");
-const elPitsaFormTopping = elPitsaForm.querySelector(".pitsa-form__topping");
-const elPitsaFormAdnl = elPitsaForm.querySelector(".pitsa-form__adnl");
+let elPitsaForm = document.querySelector(".pitsa-form");
+let elPitsaFormBreadType = elPitsaForm.querySelector(".non-type");
+let elPitsaFormSize = elPitsaForm.querySelector(".pitsa-form__size");
+let elPitsaFormTopping = elPitsaForm.querySelector(".pitsa-form__topping");
+let elPitsaFormAdnl = elPitsaForm.querySelector(".pitsa-form__adnl");
 
 // Create Option 
 let elOptionTemplate = document.querySelector(".pizza-type-option-template").content;
@@ -92,6 +93,7 @@ function createElOption(option){
     let elOption = elOptionTemplate.cloneNode(true);
     elOption.querySelector("option").value = option.name.toLowerCase();
     elOption.querySelector("option").textContent = option.name;
+    elOption.querySelector("option").dataset.cost = option.price;
     return elOption;
 }
 let elOptionFragment = document.createDocumentFragment();
@@ -107,6 +109,7 @@ let elRadioTemplate = document.querySelector(".pizza-size-radio-template").conte
 function createElRadioSize(size){
     let elRadioSize = elRadioTemplate.cloneNode(true);
     elRadioSize.querySelector('.radio-input').value = size.size;
+    elRadioSize.querySelector('.radio-input').dataset.cost = size.price;
     elRadioSize.querySelector('.radio-control').textContent = `${size.name} ${size.size}sm`;
     return elRadioSize;
 }
@@ -123,6 +126,7 @@ let elCheckboxTemplate = document.querySelector(".pizza-topping-checkbox-templat
 function createElCheckboxTopping(topping){
     let elCheckboxTopping = elCheckboxTemplate.cloneNode(true);
     elCheckboxTopping.querySelector('.checkbox-input').name = topping.name;
+    elCheckboxTopping.querySelector('.checkbox-input').dataset.cost = topping.price;
     elCheckboxTopping.querySelector('.checkbox-control').textContent = topping.name;
     return elCheckboxTopping;
 }
@@ -137,3 +141,63 @@ pizzaOptions.addl.forEach(function(topping){
     elAdnlFragment.appendChild(createElCheckboxTopping(topping))
 })
 elPitsaFormAdnl.appendChild(elAdnlFragment)
+
+// Natijalar 
+let finalSumma = elPitsaForm.querySelector(".sum")
+let nonTuriNatija = elPitsaForm.querySelector(".non-type__result")
+
+elPitsaFormBreadType.addEventListener("change",()=>{
+    for (let opt of elPitsaFormBreadType.children) {
+        if(opt.value == elPitsaFormBreadType.value){
+            nonTuriNatija.textContent = opt.textContent
+            summa = opt.dataset.cost;
+            console.log(summa)
+        }
+    }
+})
+
+elPitsaForm.querySelectorAll(".radio-input").forEach((r) =>{
+    r.addEventListener("change",()=>{
+        elPitsaForm.querySelector(".size__result").textContent = r.value + " sm"
+    })
+})
+
+elPitsaFormTopping.querySelectorAll(".checkbox-input").forEach((ch)=>{
+    ch.addEventListener("change",()=>{
+        elUst = elPitsaForm.querySelector(".ustida__result");
+        liList = elUst.querySelectorAll("li")
+        if(ch.checked == true){
+            let newLi = document.createElement("li")
+            newLi.textContent = ch.nextElementSibling.textContent;
+            elUst.appendChild(newLi)
+        }
+        if(ch.checked == false){
+            for (let li of liList) {
+                if(ch.nextElementSibling.textContent == li.textContent){
+                    li.remove()
+                }
+            }
+        }
+    })
+})
+
+elPitsaFormAdnl.querySelectorAll(".checkbox-input").forEach((ch)=>{
+    ch.addEventListener("change",()=>{
+        elAdnl = elPitsaForm.querySelector(".adnl__result");
+        liList = elAdnl.querySelectorAll("li")
+        if(ch.checked == true){
+            let newLi = document.createElement("li")
+            newLi.textContent = ch.nextElementSibling.textContent;
+            elAdnl.appendChild(newLi)
+        }
+        if(ch.checked == false){
+            for (let li of liList) {
+                if(ch.nextElementSibling.textContent == li.textContent){
+                    li.remove()
+                }
+            }
+        }
+    })
+})
+
+finalSumma.textContent= summa + " so'm";
