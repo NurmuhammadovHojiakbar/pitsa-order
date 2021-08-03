@@ -12,9 +12,9 @@ html{
 body{
     background-image: url("../img/pizza-bg.jpg");
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100vh;
     background-repeat: no-repeat;
-    /* background-position: center center; */
+    background-position: center center;
     margin: 0;
     padding: 0;
 }
