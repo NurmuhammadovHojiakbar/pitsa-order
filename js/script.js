@@ -77,14 +77,28 @@ let pizzaOptions = {
     ]
 };
 
+// Call Form and Fields
+
+const elPitsaForm = document.querySelector(".pitsa-form");
+const elPitsaFormBreadType = elPitsaForm.querySelector(".non-type");
+const elPitsaFormSize = elPitsaForm.querySelector(".pitsa-form__size");
+const elPitsaFormTopping = elPitsaForm.querySelector(".pitsa-form__topping");
+const elPitsaFormAdnl = elPitsaForm.querySelector(".pitsa-form__adnl");
+
+// Create Option 
 let elOptionTemplate = document.querySelector(".pizza-type-option-template").content;
 
 function createElOption(option){
     let elOption = elOptionTemplate.cloneNode(true);
-    elOption.value = option.name;
-    elOption.textContent = option.name;
+    elOption.querySelector("option").value = option.name.toLowerCase();
+    elOption.querySelector("option").textContent = option.name;
     return elOption;
 }
+
+pizzaOptions.breadTypes.forEach(function(breadtype){
+    elPitsaFormBreadType.appendChild(createElOption(breadtype))
+})
+// Create Radio Input
 
 let elRadioTemplate = document.querySelector(".pizza-size-radio-template").content;
 
@@ -95,6 +109,12 @@ function createElRadioSize(size){
     return elRadioSize;
 }
 
+pizzaOptions.sizes.forEach(function(size){
+    elPitsaFormSize.appendChild(createElRadioSize(size))
+})
+
+// Create Checkbox input
+
 let elCheckboxTemplate = document.querySelector(".pizza-topping-checkbox-template").content;
 
 function createElCheckboxTopping(topping){
@@ -103,3 +123,11 @@ function createElCheckboxTopping(topping){
     elCheckboxTopping.querySelector('.checkbox-control').textContent = topping.name;
     return elCheckboxTopping;
 }
+
+pizzaOptions.toppings.forEach(function(topping){
+    elPitsaFormTopping.appendChild(createElCheckboxTopping(topping))
+})
+
+pizzaOptions.addl.forEach(function(topping){
+    elPitsaFormAdnl.appendChild(createElCheckboxTopping(topping))
+})
