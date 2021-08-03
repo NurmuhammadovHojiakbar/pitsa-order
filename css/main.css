@@ -97,6 +97,9 @@ img{
 
 /* Fieldset  */
 fieldset{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     padding-top: 25px;
     padding-bottom: 25px;
     border: 2px solid #082032;
@@ -107,7 +110,11 @@ legend{
     font-weight: 600;
 }
 
-
+.checkbox,
+.radio{
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
 /* Select  */
 
 .non-type{
@@ -149,4 +156,17 @@ legend{
 
 .checkbox-input:checked ~ .checkbox-control::before{
     background-color: #2C2E43;
+}
+
+@media (max-width:750px){
+    .pitsa-form{
+        flex-direction: column;
+    }
+    .pitsa-form__fields{
+        margin-right: 0;
+        margin-bottom: 35px;
+    }
+    .pitsa-form__result{
+        max-width: 100%;
+    }
 }
