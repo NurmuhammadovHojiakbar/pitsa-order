@@ -76,7 +76,13 @@ let pizzaOptions = {
         }
     ]
 };
-let summa = 10000;
+
+let allPrices = {
+    nonPrice: [0],
+    sizePrice: [0],
+    onPrice: [0],
+    adnlPrice: [0],
+}
 
 // Call Form and Fields
 
@@ -150,8 +156,8 @@ elPitsaFormBreadType.addEventListener("change",()=>{
     for (let opt of elPitsaFormBreadType.children) {
         if(opt.value == elPitsaFormBreadType.value){
             nonTuriNatija.textContent = opt.textContent
-            summa = opt.dataset.cost;
-            console.log(summa)
+            allPrices.nonPrice[0] = Number(opt.dataset.cost)
+            tarqoqSumma()
         }
     }
 })
@@ -159,6 +165,8 @@ elPitsaFormBreadType.addEventListener("change",()=>{
 elPitsaForm.querySelectorAll(".radio-input").forEach((r) =>{
     r.addEventListener("change",()=>{
         elPitsaForm.querySelector(".size__result").textContent = r.value + " sm"
+        allPrices.sizePrice[0] = Number(r.dataset.cost)
+        tarqoqSumma()
     })
 })
 
@@ -170,14 +178,17 @@ elPitsaFormTopping.querySelectorAll(".checkbox-input").forEach((ch)=>{
             let newLi = document.createElement("li")
             newLi.textContent = ch.nextElementSibling.textContent;
             elUst.appendChild(newLi)
+            allPrices.onPrice[0] += Number(ch.dataset.cost)
         }
         if(ch.checked == false){
             for (let li of liList) {
                 if(ch.nextElementSibling.textContent == li.textContent){
                     li.remove()
+                    allPrices.onPrice[0] -= Number(ch.dataset.cost)
                 }
             }
         }
+        tarqoqSumma()
     })
 })
 
@@ -189,15 +200,39 @@ elPitsaFormAdnl.querySelectorAll(".checkbox-input").forEach((ch)=>{
             let newLi = document.createElement("li")
             newLi.textContent = ch.nextElementSibling.textContent;
             elAdnl.appendChild(newLi)
+            allPrices.adnlPrice[0] += Number(ch.dataset.cost)
         }
         if(ch.checked == false){
             for (let li of liList) {
                 if(ch.nextElementSibling.textContent == li.textContent){
                     li.remove()
+                    allPrices.adnlPrice[0] -= Number(ch.dataset.cost)
                 }
             }
         }
+        tarqoqSumma()
     })
 })
-
-finalSumma.textContent= summa + " so'm";
+function tarqoqSumma(){
+    let summa = 0;
+    let summa1 = 0;
+    let summa2 = 0;
+    let summa3 = 0;
+    let summa4 = 0;
+    for (let item in allPrices) {
+        if(item == "nonPrice"){
+            summa1 = Number(allPrices[item][0])
+        }
+        if(item == "sizePrice"){
+            summa2 = Number(allPrices[item][0])
+        }
+        if(item == "onPrice"){
+            summa3 = Number(allPrices[item][0])
+        }
+        if(item == "adnlPrice"){
+            summa4 = Number(allPrices[item][0])
+        }
+    }
+    summa = summa1+ summa2 +summa3 +summa4
+    finalSumma.textContent= summa + " so'm";
+}
