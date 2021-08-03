@@ -1,0 +1,140 @@
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+
+body{
+    background-image: url("../img/pizza-bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    max-width: 100%;
+}
+
+.visually-hidden { 
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); 
+    clip: rect(1px, 1px, 1px, 1px); 
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.site-title{
+    width: 100%;
+    max-width: 1300px;
+    text-align: center;
+    padding: 10px 15px;
+    color: #082032;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.0px );
+    -webkit-backdrop-filter: blur( 2.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.pitsa-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pitsa-form__fields{
+    width: 100%;
+    max-width: 800px;
+    margin-right: 50px;
+    padding: 5px 10px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.0px );
+    -webkit-backdrop-filter: blur( 2.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.pitsa-form__result{
+    width: 100%;
+    max-width: 400px;
+    padding: 5px 10px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.0px );
+    -webkit-backdrop-filter: blur( 2.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/* Fieldset  */
+fieldset{
+    border: 2px solid #082032;
+}
+legend{
+    font-size: 20px;
+    color: #082032;
+    font-weight: 600;
+}
+
+/* Radio style  */
+.radio-control{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-weight: 600;
+    border: 1px solid #082032;
+}
+
+.radio-input:checked ~ .radio-control{
+    background-color: #2C2E43;
+    color: #fff;
+}
+
+/* Checkbox styles  */
+.checkbox-control{
+    display: inline-flex;
+    align-items: center;
+}
+.checkbox-control::before{
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 1px solid #082032;
+    margin-right:10px;
+}
+
+.checkbox-input:checked ~ .checkbox-control::before{
+    background-color: #2C2E43;
+}

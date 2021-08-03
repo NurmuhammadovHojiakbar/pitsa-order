@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chopmas Pitsa - Online Zakas</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="site-title">Online pitsa buyurtma qiling!</h1>
+
+        <form class="pitsa-form" action="https:\\w3schools.com" method="POST">
+            <div class="pitsa-form__fields">
+                <div class="pitsa-form__group">
+                    <fieldset>
+                        <legend>Noni qanday bo'lsin?</legend>
+                        <select class="non-type" name="non-type" id="non-type">
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="pitsa-from__froup">
+                    <fieldset>
+                        <legend>Kattaligi</legend>
+                        
+                    </fieldset>
+                </div>
+                <div class="pitsa-from__froup">
+                    <fieldset>
+                        <legend>Ustida nimalarni ko'rishni hohlaysiz?</legend>
+                        
+                    </fieldset>
+                </div>
+                <div class="pitsa-from__froup">
+                    <fieldset>
+                        <legend>Qo'shimchalarni Tanlang</legend>
+                        
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="pitsa-form__result"></div>
+        </form>
+    </div>
+
+    <template class="pizza-type-option-template">
+        <option value=""></option>
+    </template>
+    
+    <template class="pizza-size-radio-template">
+        <label class="radio">
+            <input class="radio-input visually-hidden" type="radio" name="size" value="">
+            <span class="radio-control"></span>
+        </label>
+    </template>
+    
+    <template class="pizza-topping-checkbox-template">
+        <label class="checkbox">
+            <input class="checkbox-input visually-hidden" type="checkbox" name="">
+            <span class="checkbox-control"></span>
+        </label>
+    </template>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
