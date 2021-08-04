@@ -152,6 +152,11 @@ elPitsaFormAdnl.appendChild(elAdnlFragment)
 let finalSumma = elPitsaForm.querySelector(".sum")
 let nonTuriNatija = elPitsaForm.querySelector(".non-type__result")
 
+if(elPitsaFormBreadType.value == "yupqa"){
+    allPrices.nonPrice[0] = 10000;
+            tarqoqSumma()
+}
+
 elPitsaFormBreadType.addEventListener("change",()=>{
     for (let opt of elPitsaFormBreadType.children) {
         if(opt.value == elPitsaFormBreadType.value){
@@ -161,6 +166,7 @@ elPitsaFormBreadType.addEventListener("change",()=>{
         }
     }
 })
+
 
 elPitsaForm.querySelectorAll(".radio-input").forEach((r) =>{
     r.addEventListener("change",()=>{
